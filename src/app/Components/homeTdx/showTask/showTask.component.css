@@ -1,0 +1,5 @@
+table thead tr th, table tbody tr td{
+    width: 80%;
+    background-color: transparent;
+    color: white;
+}

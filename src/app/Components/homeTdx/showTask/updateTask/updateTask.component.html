@@ -1,0 +1,48 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="saveDataForm">
+        <div class="row">
+          <div class="form-group mt-4 col-6">
+            <label for="taskName" class="classFormLogin mb-1" >Nombre Tarea:</label>
+            <input type="text" id="taskName" formControlName="taskName" placeholder="Ingrese el nombre de la tarea*" class="classInput" required/>
+            <div *ngIf="saveDataForm.get('taskName')!.touched && getErrorMessage('taskName')" class="text-danger">{{ getErrorMessage('taskName') }}</div>
+          </div>
+          
+          <div class="form-group mt-4 col-6">
+            <label for="taskDescription" class="classFormLogin mb-1" >Descripción Tarea:</label>
+            <input type="text" id="taskDescription" formControlName="taskDescription" placeholder="Ingrese la descripcion de la tarea*" class="classInput" required/>
+            <div *ngIf="saveDataForm.get('taskDescription')!.touched && getErrorMessage('taskDescription')" class="text-danger">{{ getErrorMessage('taskDescription') }}</div>
+          </div>
+
+          <div class="form-group mt-4 col-6">
+            <label for="idStateTask" class="classFormLogin mb-1" >Estado:</label>
+            <select id="idStateTask" formControlName="idStateTask" placeholder="Ingrese el estado*" class="classSelect" required>
+              <option *ngFor="let items of stateTask" [value]="items.id">
+                {{items.name}}
+              </option>
+            </select>
+            <div *ngIf="saveDataForm.get('idStateTask')!.touched && getErrorMessage('idStateTask')" class="text-danger">{{ getErrorMessage('idStateTask') }}</div>
+          </div>
+
+          <div class="form-group mt-4 col-6 justify-content-end text-center">
+            <div class="row">
+              <div class="col-6">
+                <button mat-fab extended class="btn btn-success btn-md rounded-50" (click)="updateTask()">
+                  <i class="fa-solid fa-person-circle-plus"  ></i>
+                  Actualizar
+                </button>
+              </div>
+              <div class="col-6">
+                <button mat-fab extended class="btn btn-danger btn-md rounded-50" (click)="exitComponent()" >
+                  <i class="fa fa-close"></i>
+                  Volver a inicio
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

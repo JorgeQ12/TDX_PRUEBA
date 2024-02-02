@@ -1,0 +1,30 @@
+<mat-toolbar class="toolBar">
+  <span style="color: #FFFFFF; ">TDX DIGITAL ACELLERATION</span>
+</mat-toolbar>
+
+<div>
+  <div class="container">  
+    <h2 class="pt-5" style="color: #FFFFFF; text-align: center;">Bienvenido a <strong style="color: #3BB3FF">TDX.</strong></h2>
+    <p *ngIf="!isShowList && !isAddTask"  class="textHomeSpan">¿Que desea realizar?</p>
+  </div>
+
+  <div *ngIf="!isShowList && !isAddTask" class="container text-center mt-5">
+    <div class="row">
+      <div class="col-6">
+        <button mat-fab extended class="btn btn-success btn-md rounded-50" (click)="intoComponent('show')">
+          <i class="fa-solid fa-person-circle-plus"></i>
+          Mostrar Tareas
+        </button>
+      </div>
+      <div class="col-6">
+        <button mat-fab  extended class="btn btn-success btn-md rounded-50" (click)="intoComponent('add')" >
+          <i class="fa-solid fa-user-plus"></i>
+          Agregar Tarea
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <app-showTask *ngIf="isShowList" (exitComponentEmitter)="exitComponent($event)"></app-showTask>
+  <app-addTask *ngIf="isAddTask" (exitComponentEmitter)="exitComponent($event)"></app-addTask>
+</div>
